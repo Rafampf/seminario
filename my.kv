@@ -1,0 +1,1618 @@
+<Label>:
+    halign: 'center'
+
+<Erro>:
+    size_hint: 0.1 * 1.6, 0.05 *0.9
+    color: 0,0,0,1
+    text: "Error"
+    background_color: 1,0,0,1
+    background_down: "branco.png"
+
+<Image>:
+    allow_stretch: True
+    keep_ratio: False
+
+
+
+
+<CircularButtonC>:
+    canvas:
+        Color:
+            rgb: (0.81, 0, 0, 1) if self.state == 'normal' else (0.53, 0.98, 0.09, 1)
+        RoundedRectangle:
+            size: (self.size)
+            pos: (self.pos)
+            radius: [400, ]
+
+<CircularButtonE>:
+    canvas:
+        Color:
+            rgb: (0.81, 0, 0, 1) if self.state == 'normal' else (0.45, 0, 0, 1)
+        RoundedRectangle:
+            size: (self.size)
+            pos: (self.pos)
+            radius: [400, ]
+
+<Fundo@FloatLayout>:
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.15, 0, 0, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+[Barra@FloatLayout]:
+    FloatLayout:
+        size_hint: 1, 0.1
+        canvas:
+            Color:
+                rgba: 0.45, 0.03, 0.03, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    GridLayout:
+        cols: 2
+        size_hint: 1, 0.1
+        Button:
+            background_color: (0.45, 0.03, 0.03, ctx.btn1)
+            text: "Levels"
+            color: (1, 0.95, 0.95, 0.9)
+            on_release:
+                app.root.current = "m_lvl"
+        Button:
+            background_color: (0.45, 0.03, 0.03, ctx.btn2)
+            text: "Teoria"
+            color: (1, 0.95, 0.95, 0.9)
+            on_release:
+                app.root.current = "m_teo"
+
+<Topo@FloatLayout>:
+    FloatLayout:
+        size_hint: 1, 0.1
+        pos_hint: {"top": 1}
+        canvas:
+            Color:
+                rgba: 0.45, 0.03, 0.03, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+<Menu_level>:
+    texto: texto.__self__
+    fltexto: fltexto.__self__
+    bttexto: bttexto.__self__
+    on_pre_enter:
+        self.ids.tudo.remove_widget(self.ids.menulevels)
+        self.ids.fltexto.remove_widget(self.ids.bttexto)
+
+    FloatLayout:
+        id: tudo
+        ScrollView:
+            FloatLayout:
+                cols: 1
+                size_hint: 1, 1.5
+                FloatLayout:
+                    id: menu
+                    size_hint: None, None
+                    size: root.width, root.height * 1.302
+                    pos_hint: {"top": 0.935}
+                    Image:
+                        pos_hint: {"top": 1}
+                        source: "sangue.png"
+                    Image:
+                        pos_hint: {"top": 1}
+                        source: "vaso.png"
+                    ButtonL:
+                        source: "img_lvl.png"
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        pos_hint: {"center_x": 0.453, "center_y": 0.93}
+                        on_release: root.abrirmenu(self)
+                        text: "1"
+                    ButtonL:
+                        source: "img_lvl.png"
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        pos_hint: {"center_x": 0.658, "center_y": 0.775}
+                        on_release: root.abrirmenu(self)
+                        text: "2"
+                    ButtonL:
+                        source: "img_lvl.png"
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        pos_hint: {"center_x": 0.426, "center_y": 0.586}
+                        on_release: root.abrirmenu(self)
+                        text: "3"
+                    ButtonL:
+                        source: "img_lvl.png"
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        pos_hint: {"center_x": 0.51, "center_y": 0.447}
+                        on_release: root.abrirmenu(self)
+                        text: "4"
+                    ButtonL:
+                        source: "img_lvl.png"
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        pos_hint: {"center_x": 0.606, "center_y": 0.301}
+                        on_release: root.abrirmenu(self)
+                        text: "5"
+                    ButtonL:
+                        source: "img_lvl.png"
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        pos_hint: {"center_x": 0.385, "center_y": 0.132}
+                        on_release: root.abrirmenu(self)
+                        text: "6"
+                    Label:
+                        color: 1,1,1,0.3
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        font_size: root.height/40
+                        text: "1"
+                        pos_hint: {"center_x": 0.453, "center_y": 0.93}
+                    Label:
+                        color: 1,1,1,0.3
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        font_size: root.height/40
+                        text: "2"
+                        pos_hint: {"center_x": 0.658, "center_y": 0.775}
+                    Label:
+                        color: 1,1,1,0.3
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        font_size: root.height/40
+                        text: "3"
+                        pos_hint: {"center_x": 0.426, "center_y": 0.586}
+                    Label:
+                        color: 1,1,1,0.3
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        font_size: root.height/40
+                        text: "4"
+                        pos_hint: {"center_x": 0.51, "center_y": 0.447}
+                    Label:
+                        color: 1,1,1,0.3
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        font_size: root.height/40
+                        text: "5"
+                        pos_hint: {"center_x": 0.606, "center_y": 0.301}
+                    Label:
+                        color: 1,1,1,0.3
+                        size_hint: None, None
+                        size: root.width/10, root.width/10
+                        font_size: root.height/40
+                        text: "6"
+                        pos_hint: {"center_x": 0.385, "center_y": 0.132}
+                    Button:
+                        size_hint: None, None
+                        size: root.width/3, root.width/10
+                        pos_hint: {"center_x": 0.426, "y": -0.004}
+                        text: "Level Bonus"
+                        font_size: root.height/38
+                        background_normal: "branco.png"
+                        background_color: 0.505, 0.102, 0.207, 1
+                        color: 0.89, 0.584, 0.635, 1
+                        on_release: root.abrirmenu(self)
+
+        Topo:
+            Label:
+                color: (1, 0.95, 0.95, 0.9)
+                text: "Menu Levels"
+                pos_hint: {"top": 1.45}
+                font_size: int(root.height/20)
+        Barra:
+            btn1: 0.55
+            btn2: 0.15
+        FloatLayout:
+            id: menulevels
+            size_hint: 2,2
+            Button:
+                background_color: 0,0,0,0
+            FloatLayout:
+                size_hint: 0.45, 0.6*3/8
+                pos_hint: {"center_x": 0.5/2, "center_y": 0.5/2}
+                canvas:
+                    Color:
+                        rgba: 0.505, 0.102, 0.207, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    id: txtlvl
+                    text: "Level 1"
+                    size_hint: 1, 0.1
+                    pos_hint: {"top": 0.9, "x": 0}
+                    font_size: root.height/16
+                Label:
+                    id: temalvl
+                    text: "Level 1"
+                    size_hint: 1, 0.1
+                    pos_hint: {"top": 0.75, "x": 0}
+                    font_size: root.height/24
+                Label:
+                    text: "Insira a senha:"
+                    size_hint: 1, 0.1
+                    pos_hint: {"top": 0.4, "x": 0}
+                    font_size: root.height/24
+                ButtonL:
+                    source: "x.png"
+                    size_hint: 0.15, 0.15
+                    pos_hint: {"top": 0.93, "x": 0.8 }
+                    on_release:
+                        self.parent.parent.parent.remove_widget(self.parent.parent)
+                        root.limpa1()
+                FloatLayout:
+                    id: fltexto
+                    TextInput:
+                        id: texto
+                        size_hint: 0.7, 0.1
+                        pos_hint: {"top": 0.9, "x": 0.2}
+                        multiline: False
+                        on_text_validate: root.validar()
+                    Button:
+                        id: bttexto
+                        background_normal: "branco.png"
+                        background_color: 0.919, 0.082, 0.266, 1
+                        text: "JOGAR"
+                        font_size: self.height/1.5
+                        size_hint: 0.71, 0.25
+                        pos_hint: {"top": 1, "x": 0.195}
+                        on_release: app.root.current = "vic"
+
+
+<Menu_teoria>:
+    Fundo:
+
+    GridLayout:
+        spacing: root.height/400
+        size_hint: 1, 0.79
+        pos_hint: {"top": 0.895}
+        cols: 1
+        Button:
+            font_size: self.height/3.5
+            text:"Sangue"
+            background_normal: "branco.png"
+            background_down: "cinza.png"
+            background_color: 0.435, 0.086, 0.184, 1
+            on_release:
+                root.clicar(self)
+                app.root.current = "teoria"
+        Button:
+            font_size: self.height/3.5
+            text:"Fatores"
+            background_normal: "branco.png"
+            background_down: "cinza.png"
+            background_color: 0.435, 0.086, 0.184, 1
+            on_release:
+                root.clicar(self)
+                app.root.current = "teoria"
+        Button:
+            font_size: self.height/3.5
+            text:"Vitamina K"
+            background_normal: "branco.png"
+            background_down: "cinza.png"
+            background_color: 0.435, 0.086, 0.184, 1
+            on_release:
+                root.clicar(self)
+                app.root.current = "teoria"
+        Button:
+            font_size: self.height/3.5
+            text:"Genetica"
+            background_normal: "branco.png"
+            background_down: "cinza.png"
+            background_color: 0.435, 0.086, 0.184, 1
+            on_release:
+                root.clicar(self)
+                app.root.current = "teoria"
+        Button:
+            font_size: self.height/3.5
+            text:"Sintomas e Exames"
+            background_normal: "branco.png"
+            background_down: "cinza.png"
+            background_color: 0.435, 0.086, 0.184, 1
+            on_release:
+                root.clicar(self)
+                app.root.current = "teoria"
+        Button:
+            font_size: self.height/3.5
+            text:"Aspectos Sociais"
+            background_normal: "branco.png"
+            background_down: "cinza.png"
+            background_color: 0.435, 0.086, 0.184, 1
+            on_release:
+                root.clicar(self)
+                app.root.current = "teoria"
+
+    Barra:
+        btn1: 0.15
+        btn2: 0.55
+    Topo:
+        Label:
+            size_hint: 1, 0.1
+            color: (1, 0.95, 0.95, 0.9)
+            text: "Teoria"
+            pos_hint: {"top": 1}
+            font_size: int(root.height/20)
+<Teoria>:
+    Fundo:
+
+    FloatLayout:
+        ScrollView:
+            size_hint:1,0.8
+            pos_hint: {"top": 0.9}
+            Label:
+                id: texto
+                halign: "left"
+                font_size: root.height/45
+                text: 'blah blah ' * 200
+                text_size: self.width, None
+                size_hint: 0.96, None
+                pos_hint: {"top": 0.95, "center_x": 0.5}
+                height: self.texture_size[1]
+    Barra:
+        btn1: 0.15
+        btn2: 0.55
+    Topo:
+        Label:
+            id: titulo
+            size_hint: 1, 0.1
+            color: (1, 0.95, 0.95, 0.9)
+            text: "Fatores"
+            pos_hint: {"top": 1}
+            font_size: int(root.height/20)
+
+<Inicio>:
+    Fundo:
+    FloatLayout:
+        Label:
+            color: 0.919, 0.082, 0.266, 1
+            text: "Hemofilia"
+            font_size: root.height/12
+            size_hint: 1, 0.1
+            pos_hint: {"top": 0.95}
+        Label:
+            color: 0.89, 0.584, 0.635, 1
+            halign: "left"
+            text: root.topicos
+            font_size: root.height/24
+            size_hint: 1, 0.5
+            pos_hint: {"top": 0.9}
+
+        Label:
+            id: pedesenha
+            text: "Insira a senha para continuar:"
+            font_size: root.height/32
+            size_hint: 1, 0.1
+            pos_hint: {"top": 0.38}
+
+        TextInput:
+            size_hint: 0.8, 0.05
+            pos_hint: {"top": 0.3, "x": 0.1}
+            id:texto
+            multiline: False
+            on_text_validate: root.validar()
+<GameOver>:
+    FloatLayout:
+        Fundo:
+        Label:
+            text: "Game Over"
+            font_size: root.height/14
+            size_hint: 1, 0.1
+            pos_hint: {"top": 0.9}
+        Label:
+            id: pontuacao
+            text: root.pont + str(root.us)[:-2]
+            font_size: root.height/20
+            size_hint: 1, 0.1
+            pos_hint: {"top": 0.8}
+        Image:
+            source: "Hgame2.png"
+            keep_ratio: True
+            size_hint: 0.4, 0.4
+            pos_hint: {"top": 0.8, "center_x": 0.5}
+        Button:
+            pos_hint: {"top": 0.45, "center_x": 0.5}
+            font_size: self.height/3
+            text: "Tentar Novamente"
+            background_normal: "branco.png"
+            background_color: 0.505, 0.102, 0.207, 1
+            size_hint: 0.8, 0.1
+            on_release: app.root.current = "game"
+        Button:
+            pos_hint: {"top": 0.3, "center_x": 0.5}
+            font_size: self.height/3
+            background_normal: "branco.png"
+            background_color: 0.505, 0.102, 0.207, 1
+            text: "Voltar"
+            size_hint: 0.8, 0.1
+            on_release: app.root.current = "m_lvl"
+
+<Obstaculo>:
+    size_hint: None, None
+    width: "50dp"
+
+<Game>:
+    canvas:
+        Color:
+            rgba: 1,1,1,1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+            source: "sangue.png"
+    FloatLayout:
+        Label:
+            id: pontos
+            text: "Score: " + str(root.score)[:-2]
+            font_size: root.height/12
+            bold: True
+            size_hint_y: None
+            height: self.font_size
+            y: root.height*0.9
+        Player:
+            id: player
+            size_hint: None, None
+            size: root.height/15, root.height/15
+            x: root.width/20
+            y: root.height/2
+
+<ButtonCortez@Button>:
+    font_size: int(self.height/2)
+    background_color: 0.35,0.35,0.35,1
+
+<ButtonM@Button>:
+    background_normal: "branco.png"
+    background_down: "branco.png"
+    background_disabled_normal: "branco.png"
+    disabled_color: 0,0,0,1
+    text: "?"
+    color: 0,0,0,1
+    font_size: int(self.height)
+
+
+<Victor>:
+    fim_level: fim_level.__self__
+    fim_tempo: fim_tempo.__self__
+    on_pre_enter: root.start()
+    on_leave: root.fimtempo()
+    Fundo:
+    FloatLayout:
+        id: tudo
+        Label:
+            id: pergunta
+            size_hint: 1, 0.1
+            pos_hint: {"center_y": 0.75}
+            text: "pergunta"
+        GridLayout:
+            id: botoes
+            spacing: root.width/100
+            size_hint: 1, 0.4
+            pos_hint: {"top": 0.5}
+            cols: 2
+            Button:
+                text: "resposta"
+                background_down: "cinza.png"
+                background_normal: "branco.png"
+                background_color: 0.886, 0.105, 0.235, 1
+                on_release: root.validar(self)
+                font_size: self.height/8
+            Button:
+                text: ""
+                background_down: "cinza.png"
+                background_normal: "branco.png"
+                background_color: 0.070, 0.411, 0.803, 1
+                on_release: root.validar(self)
+                font_size: self.height/8
+            Button:
+                text: ""
+                background_down: "cinza.png"
+                background_normal: "branco.png"
+                background_color: 0.847, 0.619, 0, 1
+                on_release: root.validar(self)
+                font_size: self.height/8
+            Button:
+                text: ""
+                background_down: "cinza.png"
+                background_normal: "branco.png"
+                background_color: 0.160, 0.560, 0.051, 1
+                on_release: root.validar(self)
+                font_size: self.height/8
+
+        Label:
+            id: cronometro
+            text: str(root.tempo)
+            size_hint: 1, 0.1
+            pos_hint: {"center_x": 0.15, "center_y": 0.55}
+            font_size: root.height/16
+
+        Label:
+            id: marcacao
+            text: "1/2"
+            size_hint: 1, 0.1
+            pos_hint: {"center_x": 0.93, "center_y": 0.52}
+            font_size: root.height/36
+
+        FloatLayout:
+            id: fim_level
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Level Concluido"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+
+            Label:
+                text: "Letra desbloqueada:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                text: ":)"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+            Label:
+                id: letra
+                text: "primeira letra: X"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Voltar"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5/2 - 0.04}
+                size_hint: 0.3,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release: app.root.current = "m_lvl"
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.69}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.fimtempo()
+                    root.start()
+                    root.ids.tudo.remove_widget(root.ids.fim_level)
+        FloatLayout:
+            id: fim_tempo
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                id: motivo
+                text: "Tempo Esgotado"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+            Label:
+                text: ":("
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+
+            Label:
+                text: "A resposta era:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                id: resposta
+                text: "Verdadeiro"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.start()
+                    root.parent.parent.remove_widget(self.parent)
+
+    Barra:
+        btn1: 0.55
+        btn2: 0.15
+    Topo:
+        Label:
+            size_hint: 1, 0.1
+            color: (1, 0.95, 0.95, 0.9)
+            text: "Sangue"
+            pos_hint: {"top": 1}
+            font_size: int(root.height/20)
+
+<Rafa>:
+    tampa: tampa.__self__
+    fim_level: fim_level.__self__
+    on_pre_enter:
+        root.start()
+    Fundo:
+    FloatLayout:
+        id: tudo
+        Label:
+            text: "Junte os Pares:"
+            pos_hint: {"top": 0.9}
+            size_hint: 1, 0.1
+            font_size: int(root.height/20)
+        Label:
+            id: txt1
+            text: ""
+            pos_hint: {"top": 0.2, "center_x": 0.23}
+            size_hint: 1, 0.1
+            color: 1,1,1,1
+            font_size: root.height/32
+        Label:
+            text: "+"
+            pos_hint: {"top": 0.2, "center_x": 0.5}
+            size_hint: 1, 0.1
+            color: 1,1,1,1
+            font_size: root.height/20
+        Label:
+            id: txt2
+            text: ""
+            pos_hint: {"top": 0.2, "center_x": 0.77}
+            size_hint: 1, 0.1
+            color: 1,1,1,1
+            font_size: root.height/32
+
+        GridLayout:
+            id: memoria
+            size_hint: 1, 0.6
+            pos_hint: {"top": 0.8}
+            cols: 3
+            spacing: 10
+            padding: 10
+            ButtonM:
+                on_release: root.virar(self, 0)
+            ButtonM:
+                on_release: root.virar(self, 1)
+            ButtonM:
+                on_release: root.virar(self, 2)
+            ButtonM:
+                on_release: root.virar(self, 3)
+            ButtonM:
+                on_release: root.virar(self, 4)
+            ButtonM:
+                on_release: root.virar(self, 5)
+            ButtonM:
+                on_release: root.virar(self, 6)
+            ButtonM:
+                on_release: root.virar(self, 7)
+            ButtonM:
+                on_release: root.virar(self, 8)
+            ButtonM:
+                on_release: root.virar(self, 9)
+            ButtonM:
+                on_release: root.virar(self, 10)
+            ButtonM:
+                on_release: root.virar(self, 11)
+        Button:
+            id: tampa
+            background_color: 0,0,0,0
+        FloatLayout:
+            id: fim_level
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Level Concluido"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+            Label:
+                text: ":)"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+
+            Label:
+                text: "Letra desbloqueada:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                id: letra
+                text: "primeira letra: X"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Voltar"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5/2 - 0.04}
+                size_hint: 0.3,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release: app.root.current = "m_lvl"
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.69}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.start()
+                    root.ids.tudo.remove_widget(root.ids.fim_level)
+
+    Barra:
+        btn1: 0.55
+        btn2: 0.15
+    Topo:
+        Label:
+            size_hint: 1, 0.1
+            color: (1, 0.95, 0.95, 0.9)
+            text: "Fatores"
+            pos_hint: {"top": 1}
+            font_size: int(root.height/20)
+
+
+<Carlos>:
+    on_enter:
+        root.start()
+        self.ids.tudo.remove_widget(self.ids.fim_level)
+        self.ids.tudo.remove_widget(self.ids.fim_tempo)
+    Fundo:
+    FloatLayout:
+        id:tudo
+        Button:
+            id: contador
+            background_color: 0,0.7,0,1
+            background_normal: "branco.png"
+            pos_hint: {"center_x": 0, "top": 0.895}
+            size_hint: 0.04, 0.065
+        Button:
+            id:tempo
+            background_color: 0.25,1,0.25,1
+            background_normal: "branco.png"
+            pos_hint: {"center_x": 0, "top": 0.825}
+            size_hint: 1.99, 0.065
+        Image:
+            source: "Lcarlos.png"
+        Label:
+            id: frase
+            text: "Frase"
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            font_size: int(root.height/40)
+            color: 0,0,0,1
+        Button:
+            size_hint: 0.5,0.35
+            background_color: 0,0.7,0,1
+            background_normal: "branco.png"
+            on_release: root.checar(True)
+        Button:
+            size_hint: 0.5,0.35
+            pos_hint: {"x": 0.5}
+            background_color: 0.7,0,0,1
+            background_normal: "branco.png"
+            on_release: root.checar(False)
+
+        FloatLayout:
+            id: fim_level
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Level Concluido"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+            Label:
+                text: ":)"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+
+            Label:
+                text: "Letra desbloqueada:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                id: letra
+                text: "primeira letra: X"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Voltar"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5/2 - 0.04}
+                size_hint: 0.3,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release: app.root.current = "m_lvl"
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.69}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.start()
+                    self.parent.parent.remove_widget(self.parent)
+
+        FloatLayout:
+            id: fim_tempo
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                id: motivo
+                text: "Tempo Esgotado"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+            Label:
+                text: ":("
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+
+            Label:
+                text: "A resposta era:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                id: resposta
+                text: "Verdadeiro"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.start()
+                    self.parent.parent.remove_widget(self.parent)
+
+    Barra:
+        btn1: 0.55
+        btn2: 0.15
+    Topo:
+        Label:
+            size_hint: 1, 0.1
+            color: (1, 0.95, 0.95, 0.9)
+            text: "Vitamina K"
+            pos_hint: {"top": 1}
+            font_size: int(root.height/20)
+
+
+<Dago>:
+    on_leave: root.restart()
+    tudo: tudo.__self__
+    imgdago1: imgdago1.__self__
+    imgdago2: imgdago2.__self__
+    imgdago3: imgdago3.__self__
+    on_pre_enter:
+        self.ids.tudo.remove_widget(self.ids.FLcromossomo)
+        self.ids.tudo.remove_widget(self.ids.FLxq28)
+        self.ids.tudo.remove_widget(self.ids.fim_level)
+    FloatLayout:
+        id: tudo
+        FloatLayout:
+            id: branco
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+        Image:
+            id: imgdago1
+            source: "cariotipo.png"
+            pos_hint: {"right": 0.92 + 0.038, "y": 0.774 - 0.42}
+            size_hint: 0.92, 0.42
+
+        FloatLayout:
+            id: FLcariotipo
+            Label:
+                pos_hint: {"center_x": 0.176, "center_y": 0.675}
+                text: "2"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.833, "center_y": 0.582}
+                text: "12"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.176, "center_y": 0.475}
+                text: "14"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.426, "center_y": 0.476}
+                text: "15"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.84, "center_y": 0.385}
+                text: "X"
+                color: 0,0,0,1
+            CircularButtonC:
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"right": 0.88 + 0.038, "y": 0.79 - 0.42}
+                on_release: root.zoom(1)
+            CircularButtonE:
+                text: "1"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.233, "center_y": 0.672}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "1"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.893, "center_y": 0.578}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "1"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.24, "center_y": 0.476}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "1"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.368, "center_y": 0.473}
+                on_release: root.erro(self)
+            FloatLayout:
+                id: erroaqui1
+
+
+        Image:
+            id: imgdago2
+            source: "cromossomo.png"
+            pos_hint: {"center_x": 0.6, "y": 0.42}
+            size_hint: 0.92*0.8, 0.42*0.8
+            opacity: 0
+        FloatLayout:
+            id: FLcromossomo
+            Label:
+                pos_hint: {"center_x": 0.273, "center_y": 0.713}
+                text: "Xp21"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.663, "center_y": 0.757}
+                text: "Xp22.2"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.676, "center_y": 0.608}
+                text: "Xq13"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.293, "center_y": 0.511}
+                text: "Xq24"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.67, "center_y": 0.424}
+                text: "Xq28"
+                color: 0,0,0,1
+            CircularButtonE:
+                text: "2"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.136, "center_y": 0.703}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "2"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.783, "center_y": 0.742}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "2"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.826, "center_y": 0.591}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "2"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.16, "center_y": 0.498}
+                on_release: root.erro(self)
+            CircularButtonE:
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.823, "center_y": 0.414}
+                on_release: root.zoom(2)
+            FloatLayout:
+                id: erroaqui2
+
+        Image:
+            id: imgdago3
+            source: "Xq28.png"
+            size_hint: 0.92/4, 0.6/4
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+            opacity: 0
+        FloatLayout:
+            id: FLxq28
+            Label:
+                pos_hint: {"center_x": 0.173, "center_y": 0.708}
+                text: "intron 4"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.246, "center_y": 0.417}
+                text: "intron 7"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.45, "center_y": 0.735}
+                text: "intron 14"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.556, "center_y": 0.4}
+                text: "intron 22"
+                color: 0,0,0,1
+            Label:
+                pos_hint: {"center_x": 0.81, "center_y": 0.727}
+                text: "intron 25"
+                color: 0,0,0,1
+            CircularButtonE:
+                text: "3"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.18, "center_y": 0.667}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "3"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.25, "center_y": 0.447}
+                on_release: root.erro(self)
+            CircularButtonE:
+                text: "3"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.45, "center_y": 0.706}
+                on_release: root.erro(self)
+            CircularButtonE:
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.563, "center_y": 0.429}
+                on_release: root.zoom(3)
+            CircularButtonE:
+                text: "3"
+                size_hint: 0.03 * 1.6, 0.03 * 0.9
+                pos_hint: {"center_x": 0.813, "center_y": 0.697}
+                on_release: root.erro(self)
+            FloatLayout:
+                id: erroaqui3
+
+
+
+        FloatLayout:
+            id: fim_level
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Level Concluido"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+            Label:
+                text: "Parabens! ela se encontra\nno intron 22 do gene Xq28"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.72, "center_x": 0.5}
+
+            Label:
+                text: "Letra desbloqueada:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                id: letra
+                text: "primeira letra: X"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.42, "center_x": 0.5}
+
+            Button:
+                text: "Voltar"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5/2 - 0.04}
+                size_hint: 0.3,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release: app.root.current = "m_lvl"
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.69}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release: root.restart()
+
+
+
+        Image:
+            id: base
+            source: "Ldago.png"
+            allow_stretch: True
+        Label:
+            id: lbl1
+            size_hint: 1, 0.1
+            color: (1, 0.95, 0.95, 0.9)
+            text: "Identifique os objetivos:"
+            pos_hint: {"top": 0.92}
+            font_size: int(root.height/26)
+        Label:
+            id: lbl2
+            size_hint: 1, 0.1
+            color: (1, 0.95, 0.95, 0.9)
+            text: "Onde fica localizada a mutacao \n responsavel por mais de 50% \n dos caso de hemofilia A grave?"
+            pos_hint: {"top": 0.3}
+            font_size: int(root.height/33)
+
+        Barra:
+            id: barra
+            btn1: 0.55
+            btn2: 0.15
+        Topo:
+            id: topo
+            Label:
+                size_hint: 1, 0.1
+                color: (1, 0.95, 0.95, 0.9)
+                text: "Genetica"
+                pos_hint: {"top": 1}
+                font_size: int(root.height/20)
+
+
+<Tecla@Button>
+    size_hint: 0.095, 0.09
+    background_color: (0,0,1,1)
+    background_normal: "branco.png"
+    background_disabled_normal: "cinza.png"
+
+<Alex>:
+    fim_tempo: fim_tempo.__self__
+    fim_level: fim_level.__self__
+    teclado: teclado.__self__
+    on_pre_enter: root.start()
+    Fundo:
+    FloatLayout:
+        id: tudo
+        FloatLayout:
+            id: forca
+            FloatLayout:
+                id: letraqui
+                size_hint:0.9, 0.5
+                pos_hint: {"x": 0.05, "top": 0.9}
+            Image:
+                id: imagemforca
+                source: "img0.png"
+                size_hint: 0.6 , 0.4
+                pos_hint: {"x":0.4, "top":0.84}
+            Label:
+                text: "Dica:"
+                size_hint: 1, 0.1
+                font_size: root.height/40
+                pos_hint: {"top": 0.93}
+            Label:
+                id: dica
+                text: "Dica:"
+                size_hint: 1, 0.1
+                font_size: root.height/40
+                pos_hint: {"top": 0.89}
+            FloatLayout:
+                id: teclado
+                Tecla:
+                    text: "a"
+                    pos_hint: {"x": 0.0258, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+
+                Tecla:
+                    text: "b"
+                    pos_hint: {"x": 0.1448, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "c"
+                    pos_hint: {"x": 0.2638, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: root.cedilha
+                    pos_hint: {"x": 0.3828, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "d"
+                    pos_hint: {"x": 0.5018, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "e"
+                    pos_hint: {"x": 0.6208, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "f"
+                    pos_hint: {"x": 0.7398, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "g"
+                    pos_hint: {"x": 0.8588, "top": 0.4}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "h"
+                    pos_hint: {"x": 0.0258, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "i"
+                    pos_hint: {"x": 0.1448, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "j"
+                    pos_hint: {"x": 0.2638, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "l"
+                    pos_hint: {"x": 0.3828, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "m"
+                    pos_hint: {"x": 0.5018, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "n"
+                    pos_hint: {"x": 0.6208, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "o"
+                    pos_hint: {"x": 0.7398, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "p"
+                    pos_hint: {"x": 0.8588, "top": 0.3}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "q"
+                    pos_hint: {"x": 0.0258, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "r"
+                    pos_hint: {"x": 0.1448, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "s"
+                    pos_hint: {"x": 0.2638, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "t"
+                    pos_hint: {"x": 0.3828, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "u"
+                    pos_hint: {"x": 0.5018, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "v"
+                    pos_hint: {"x": 0.6208, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "x"
+                    pos_hint: {"x": 0.7398, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+                Tecla:
+                    text: "z"
+                    pos_hint: {"x": 0.8588, "top": 0.2}
+                    on_release:
+                        root.apertar(self)
+        FloatLayout:
+            id: fim_level
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Level Concluido"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+            Label:
+                text: ":)"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+
+            Label:
+                text: "Letra desbloqueada:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                id: letra
+                text: "primeira letra: X"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Voltar"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5/2 - 0.04}
+                size_hint: 0.3,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release: app.root.current = "m_lvl"
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.69}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.start()
+                    root.parent.parent.remove_widget(self.parent)
+        FloatLayout:
+            id: fim_tempo
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Resposta Incorreta"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+            Label:
+                text: ":("
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+
+            Label:
+                text: "A resposta era:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                id: resposta
+                text: "Verdadeiro"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.start()
+                    root.parent.parent.remove_widget(self.parent)
+        Barra:
+            btn1: 0.55
+            btn2: 0.15
+        Topo:
+            Label:
+                size_hint: 1, 0.1
+                color: (1, 0.95, 0.95, 0.9)
+                text: "Sintomas e Exames"
+                pos_hint: {"top": 1}
+                font_size: int(root.height/20)
+
+<Cortez>:
+    on_pre_enter:
+        root.start()
+    FloatLayout:
+        id: tudo
+        Fundo:
+        Image:
+            source: "Lcortez.png"
+            size_hint: 1, 0.8
+            pos_hint: {"y":0.1}
+
+        Barra:
+            btn1: 0.55
+            btn2: 0.15
+        Topo:
+            Label:
+                size_hint: 1, 0.1
+                color: (1, 0.95, 0.95, 0.9)
+                text: "Aspectos Sociais"
+                pos_hint: {"top": 1}
+                font_size: int(root.height/20)
+        Label:
+            size_hint: 1, 0.1
+            color: 0.08,0.08,0.08,1
+            text: "Cerca de quantos hemofilicos \n existem em Pernambuco?"
+            pos_hint: {"top": 0.88}
+            font_size: int(root.height/32)
+        GridLayout:
+            size_hint: 0.5, 0.35
+            pos_hint: {"top": 0.68, "x": 0.06}
+            cols: 1
+            GridLayout:
+                size_hint: 1, 0.6
+                cols: 2
+                ButtonCortez:
+                    text: "+10"
+                    on_release: root.soma(10)
+                ButtonCortez:
+                    text: "+100"
+                    on_release: root.soma(100)
+            Label:
+                color: 0.53, 0.98, 0.09, 1
+                font_name: 'DS-DIGI'
+                id: npessoas
+                text: "0"
+                font_size: int(root.height/10)
+            GridLayout:
+                size_hint: 1, 0.6
+                cols: 2
+                ButtonCortez:
+                    text: "-10"
+                    on_release: root.soma(-10)
+                ButtonCortez:
+                    text: "-100"
+                    on_release: root.soma(-100)
+            ButtonCortez:
+                background_color: 0,1,0,1
+                text: "V"
+                size_hint: 1, 0.75
+                on_release: root.confirmar()
+        Label:
+            id: feedback
+            color: 0.53, 0.98, 0.09, 1
+            font_name: 'DS-DIGI'
+            text: ""
+            font_size: int(root.height/10)
+            pos_hint: {"top": 0.668}
+            opacity: 0.5
+
+
+
+        RelativeLayout:
+            size_hint: 0.1, 0.35
+            pos_hint: {"y": 0.35, "x": 0.75}
+            Button:
+                size_hint: 1, 1
+                background_normal: "branco.png"
+                background_down: "branco.png"
+                background_color: 0.38,0.38,0.38,1
+            Button:
+                id: term
+                size_hint: 1, 0.15
+                background_normal: "branco.png"
+                background_down: "branco.png"
+                background_color: 0.09, 0.86, 0.89, 1
+
+        Button:
+            id: bolaterm
+            size_hint: 0.2, 0.1
+            pos_hint: {"y": 0.3, "x": 0.695}
+            background_normal: "branco.png"
+            background_down: "branco.png"
+            background_color: 0.09, 0.86, 0.89, 1
+
+
+        Image:
+            id: imgterm
+            source: "termo.png"
+            pos_hint: {"x": 0.64, "y": 0.27}
+            size_hint: 0.32,0.45
+        FloatLayout:
+            id: fim_level
+            size_hint: 0.93, 0.408
+            pos_hint: {"x":0.032, "y":0.85-0.485}
+            canvas:
+                Color:
+                    rgba: 0.505, 0.102, 0.207, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Level Concluido"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.9, "center_x": 0.5}
+
+
+            Label:
+                text: "Letra desbloqueada:"
+                font_size: int(root.height/24)
+                pos_hint: {"center_y": 0.5, "center_x": 0.5}
+
+            Label:
+                text: ":)"
+                font_size: int(root.height/20)
+                pos_hint: {"center_y": 0.7, "center_x": 0.5}
+
+            Label:
+                id: letra
+                text: "primeira letra: X"
+                font_size: int(root.height/30)
+                pos_hint: {"center_y": 0.35, "center_x": 0.5}
+
+            Button:
+                text: "Voltar"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.5/2 - 0.04}
+                size_hint: 0.3,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release: app.root.current = "m_lvl"
+
+            Button:
+                text: "Tentar Novamente"
+                font_size: int(root.height/40)
+                pos_hint: {"center_y": 0.12, "center_x": 0.69}
+                size_hint: 0.5,0.15
+                background_normal: "branco.png"
+                background_color: 0.919, 0.082, 0.266, 1
+                on_release:
+                    root.start()
+                    root.parent.parent.remove_widget(self.parent)
