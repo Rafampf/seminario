@@ -1,3 +1,5 @@
+#:import ScrollEffect  kivy.effects.scroll.ScrollEffect
+
 <Label>:
     halign: 'center'
 
@@ -88,6 +90,7 @@
     FloatLayout:
         id: tudo
         ScrollView:
+            effect_cls: ScrollEffect
             FloatLayout:
                 cols: 1
                 size_hint: 1, 1.5
@@ -209,6 +212,7 @@
         FloatLayout:
             id: menulevels
             size_hint: 2,2
+            pos_hint: {"top": 2.15}
             Button:
                 background_color: 0,0,0,0
             FloatLayout:
@@ -249,9 +253,10 @@
                     TextInput:
                         id: texto
                         size_hint: 0.7, 0.1
-                        pos_hint: {"top": 0.9, "x": 0.2}
+                        pos_hint: {"top": 1.2, "x": 0.2}
                         multiline: False
                         on_text_validate: root.validar()
+
                     Button:
                         id: bttexto
                         background_normal: "branco.png"
@@ -341,6 +346,7 @@
 
     FloatLayout:
         ScrollView:
+            effect_cls: ScrollEffect
             size_hint:1,0.8
             pos_hint: {"top": 0.9}
             Label:
@@ -393,7 +399,8 @@
             pos_hint: {"top": 0.3, "x": 0.1}
             id:texto
             multiline: False
-            on_text_validate: root.validar()
+            on_focus: root.sobeteclado(self)
+            on_text_validate: root.validar(self)
 <GameOver>:
     FloatLayout:
         Fundo:
@@ -777,6 +784,9 @@
 
 
 <Carlos>:
+    resposta: resposta.__self__
+    letra: letra.__self__
+    tampa: tampa.__self__
     on_enter:
         root.start()
         self.ids.tudo.remove_widget(self.ids.fim_level)
@@ -784,6 +794,10 @@
     Fundo:
     FloatLayout:
         id:tudo
+        Button:
+            id: tampa
+            background_color: 0,0,0,0
+            size_hint: 2,2
         Button:
             id: contador
             background_color: 0,0.7,0,1
