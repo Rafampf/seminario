@@ -1,4 +1,3 @@
-import kivy
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 from kivy.app import App
@@ -6,16 +5,11 @@ from kivy.config import Config
 from kivy.uix.image import Image
 from kivy.properties import NumericProperty
 from kivy.uix.button import Button
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.floatlayout import FloatLayout
 from kivy.animation import Animation
 from random import sample
 from random import random
 from random import randint
 from kivy.clock import Clock
-from kivy.uix.scatter import Scatter
-from kivy.graphics import *
-from kivy.core.text import FontContextManager as FCM
 from kivy.uix.button import ButtonBehavior
 from kivy.uix.label import Label
 from kivy.uix.widget import Widget
@@ -76,6 +70,9 @@ class Inicio(Screen):
     -Aspectos Sociais
     
     '''
+    def sobeteclado(self, coisa):
+        coisa.text = ""
+        coisa.pos_hint = {"top": 0.6}
     def on_pre_enter(self, *args):
         Clock.schedule_interval(self.apagar, 3)
         self.ids.texto.text = "senha"
@@ -86,7 +83,8 @@ class Inicio(Screen):
         anim = Animation(opacity=0.2, duration= 1.5)
         anim.start(self.ids.pedesenha)
         Clock.schedule_once(self.acender, 1.5)
-    def validar(self):
+    def validar(self, coisa):
+        coisa.pos_hint = {"top": 0.3}
         if self.ids.texto.text == "apres":
             sm.current = 'm_lvl'
 
@@ -115,6 +113,8 @@ class Menu_level(Screen):
                 self.ids.fltexto.add_widget(self.ids.bttexto)
             self.ids.temalvl.text = self.l[int(qual.text)]
         self.ids.tudo.add_widget(self.ids.menulevels)
+
+
     def validar(self):
         if self.ids.texto.text.lower() == "trombina" and self.ids.txtlvl.text == "Level 2":
             sm.current = 'rafa'
@@ -408,6 +408,11 @@ class Carlos(Screen):
                       "pelas vias linfáticas", True],
                      ["O ciclo da vitamina K ocorre\nsomente no fígado", False],
                      ["O resultado líquido do ciclo é\na conversão da epoxi-vitamina\nK em hidroquinona", True]]
+    def tirarampa(self, *args):
+        try:
+            self.ids.tudo.remove_widget(self.ids.tampa)
+        except:
+            pass
     def prox_frase(self, seconds=0):
         if self.l[0][1]:
             self.ultima_resposta = True
@@ -416,6 +421,7 @@ class Carlos(Screen):
         self.ids.frase.text = self.l[0][0]
         self.l.remove(self.l[0])
     def renovar(self):
+        Clock.schedule_once(self.tirarampa, 1.1)
         Animation.cancel_all(self.ids.tempo)
         animFim = Animation(size_hint=(1.99, 0.065),background_color=(0.25,1,0.25,1), duration=1)
         if 3 > self.score > 0:
@@ -447,21 +453,24 @@ class Carlos(Screen):
         anim.start(self.ids.tempo)
         Clock.schedule_once(self.perdeu, 10.1)
     def start(self):
+        self.tirarampa()
         self.ultima_resposta = ""
         self.score = 0
         self.ids.contador.size_hint = (0.04, 0.065)
         self.ids.tempo.size_hint = (1.99, 0.065)
+        self.ids.tempo.background_color = 0.25,1,0.25,1
         self.l = sample(self.l_inicial, len(self.l_inicial))
         self.prox_frase()
         Clock.schedule_once(self.time, 2)
     def checar(self, resposta):
+        self.ids.tudo.add_widget(self.ids.tampa)
         if resposta == self.ultima_resposta:
             self.score += 1
             self.renovar()
         else:
-            if self.l[0][1]:
+            if self.ultima_resposta:
                 self.ids.resposta.text = "Verdadeiro"
-            elif not self.l[0][1]:
+            elif not self.ultima_resposta:
                 self.ids.resposta.text = "Falso"
             Animation.cancel_all(self.ids.tempo)
             self.ids.motivo.text = "Resposta Incorreta"
@@ -672,13 +681,13 @@ class Menu_teoria(Screen):
 
 
 
+sm.add_widget(Carlos(name='carlos'))
 sm.add_widget(Inicio(name='inicio'))
 sm.add_widget(Menu_level(name='m_lvl'))
 sm.add_widget(Teoria(name='teoria'))
 sm.add_widget(Menu_teoria(name='m_teo'))
 sm.add_widget(Victor(name='vic'))
 sm.add_widget(Rafa(name='rafa'))
-sm.add_widget(Carlos(name='carlos'))
 sm.add_widget(Dago(name='dago'))
 sm.add_widget(Alex(name='alex'))
 sm.add_widget(Cortez(name='cortez'))
