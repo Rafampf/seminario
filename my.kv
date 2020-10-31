@@ -401,6 +401,13 @@
             multiline: False
             on_focus: root.sobeteclado(self)
             on_text_validate: root.validar(self)
+        Label:
+            text: "Created by Rafael Monteiro"
+            font_size: root.height/32
+            size_hint: 1, 0.1
+            color: 1,1,1, 0.1
+            pos_hint: {"top": 0.08}
+
 <GameOver>:
     FloatLayout:
         Fundo:
