@@ -681,13 +681,13 @@ class Menu_teoria(Screen):
 
 
 
-sm.add_widget(Carlos(name='carlos'))
 sm.add_widget(Inicio(name='inicio'))
 sm.add_widget(Menu_level(name='m_lvl'))
 sm.add_widget(Teoria(name='teoria'))
 sm.add_widget(Menu_teoria(name='m_teo'))
 sm.add_widget(Victor(name='vic'))
 sm.add_widget(Rafa(name='rafa'))
+sm.add_widget(Carlos(name='carlos'))
 sm.add_widget(Dago(name='dago'))
 sm.add_widget(Alex(name='alex'))
 sm.add_widget(Cortez(name='cortez'))
